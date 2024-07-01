@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="170" height="74" viewBox="0 0 170 74">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Clip_6" data-name="Clip 6" d="M0,0H56.48V65.8H0Z" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="OnxRestaurant_Logo" transform="translate(606 -505.801)">
+    <g id="OnxLogo" transform="translate(-606 505.801)">
+      <path id="Fill_1" data-name="Fill 1" d="M20.179,29.513,0,69.4l27.444-40.68L2.421,0Z" transform="translate(71.921 3.158)" fill="#004f62"/>
+      <path id="Fill_2" data-name="Fill 2" d="M0,6.457,4.843,0l20.18,22.6H10.493Z" transform="translate(95.818 32.485)" fill="#eb1d25"/>
+      <path id="Fill_3" data-name="Fill 3" d="M0,25.83,13.722,0h11.3L4.843,29.866Z" transform="translate(95.818 0.736)" fill="#969896"/>
+      <path id="Fill_4" data-name="Fill 4" d="M0,17.758,8.072,0h7.264l3.229,8.072L22.6,0h6.458L20.986,17.758H14.529l2.421-4.843L12.915,4.843,7.264,17.758Z" transform="translate(54.407 37.302)" fill="#969896"/>
+      <g id="Group_7" data-name="Group 7" transform="translate(0 0)">
+        <path id="Clip_6-2" data-name="Clip 6" d="M0,0H56.48V65.8H0Z" fill="none"/>
+        <g id="Group_7-2" data-name="Group 7" clip-path="url(#clip-path)">
+          <path id="Fill_5" data-name="Fill 5" d="M49.575,18.264C53.611,11.09,47.008,3.81,42.123,1.781,27.96-4.1,10.546,5.061,3.228,22.247S1.457,58.131,15.619,64.014,47.2,60.733,54.514,43.548a41.12,41.12,0,0,0,1.966-5.754h-8.7q-.184.467-.384.933C41.251,53.166,27.772,61.343,17.294,56.99S3.305,37.4,9.454,22.966,29.083.351,39.562,4.7c5.267,2.188,8.773,7.124,10.177,13.327Z" transform="translate(0 0)" fill="#969896"/>
+        </g>
+        <path id="Fill_8" data-name="Fill 8" d="M14.529,7.264A7.265,7.265,0,1,1,7.265,0a7.265,7.265,0,0,1,7.264,7.264" transform="translate(42.714 20.583)" fill="#eb1d25"/>
+      </g>
+    </g>
+    <text id="Orders_Delivery" data-name="Orders Delivery" transform="translate(-477 576.801)" fill="#969896" font-size="12" font-family="MyriadPro-Regular, Myriad Pro" letter-spacing="0.025em"><tspan x="-40" y="0">Orders Delivery</tspan></text>
+  </g>
+</svg>
