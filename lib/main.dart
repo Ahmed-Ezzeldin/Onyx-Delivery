@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:onyx_delivery/data/local/shared_preference.dart';
-import 'package:onyx_delivery/data/providers/provider_setup.dart';
-import 'package:onyx_delivery/model/config/app_environment.dart';
-import 'package:onyx_delivery/model/config/logger.dart';
-import 'package:onyx_delivery/model/services/localization/app_language.dart';
-import 'package:onyx_delivery/model/services/router/nav_service.dart';
-import 'package:onyx_delivery/model/services/theme/app_colors.dart';
-import 'package:onyx_delivery/model/services/theme/app_theme.dart';
-import 'package:onyx_delivery/view/screens/splash_screen.dart';
+import 'package:onyx_delivery/utils/shared_preference.dart';
+import 'package:onyx_delivery/utils/providers/provider_setup.dart';
+import 'package:onyx_delivery/services/localization/app_language.dart';
+import 'package:onyx_delivery/services/router/nav_service.dart';
+import 'package:onyx_delivery/services/theme/app_colors.dart';
+import 'package:onyx_delivery/feature/auth/view/splash_screen.dart';
+import 'package:onyx_delivery/services/theme/app_theme.dart';
+import 'package:onyx_delivery/utils/app_environment.dart';
+import 'package:onyx_delivery/utils/logger.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
