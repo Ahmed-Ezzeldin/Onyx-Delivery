@@ -25,5 +25,8 @@
     "Please enter your user ID": "Please enter your user ID",
     "Please enter your password": "Please enter your password",
     "Tap to retry": "Tap to retry",
+    "Delivered": "Delivered",
+    "Partial Return": "Partial Return",
+    "Full Return": "Full Return",
     "LAST": "LAST"
 }

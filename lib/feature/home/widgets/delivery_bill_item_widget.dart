@@ -12,6 +12,46 @@ class DeliveryBillItemWidget extends StatelessWidget {
 
   final DeliveryBillModel? deliveryBill;
 
+/*
+enum DeliveryStatusFlag {
+        static let NEW            = "0"
+        static let DELIVERED      = "1"
+        static let PARTIAL_RETURN = "2"
+        static let FULL_RETURN    = "3"
+    }
+
+*/
+
+  String getStatus(String statusFlg) {
+    switch (statusFlg) {
+      case "0":
+        return "New";
+      case "1":
+        return "Delivered";
+      case "2":
+        return "Partial Return";
+      case "3":
+        return "Full Return";
+      default:
+        return "New";
+    }
+  }
+
+  Color getColor(String statusFlg) {
+    switch (statusFlg) {
+      case "0":
+        return AppColors.statusNew;
+      case "1":
+        return AppColors.statusDelivered;
+      case "2":
+        return AppColors.redColor;
+      case "3":
+        return AppColors.redColor;
+      default:
+        return AppColors.primaryColor;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final appLanguage = Provider.of<AppLanguage>(context);
@@ -52,9 +92,11 @@ class DeliveryBillItemWidget extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const OrderInfoWidget(
+                        OrderInfoWidget(
+                          color: getColor("${deliveryBill?.dLVRYSTATUSFLG}"),
                           title: "Status",
-                          value: "Delivering",
+                          // value: "Delivering",
+                          value: getStatus("${deliveryBill?.dLVRYSTATUSFLG}"),
                         ),
                         const VerticalDivider(color: AppColors.grey, thickness: 1),
                         OrderInfoWidget(
@@ -81,7 +123,8 @@ class DeliveryBillItemWidget extends StatelessWidget {
             height: 100,
             padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
-              color: AppColors.primaryColor,
+              // color: AppColors.primaryColor,
+              color: getColor("${deliveryBill?.dLVRYSTATUSFLG}"),
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(appLanguage.isLTR(context) ? 8 : 0),
                 bottomRight: Radius.circular(appLanguage.isLTR(context) ? 8 : 0),
@@ -111,10 +154,12 @@ class OrderInfoWidget extends StatelessWidget {
   const OrderInfoWidget({
     required this.title,
     required this.value,
+    this.color = AppColors.primaryColor,
     super.key,
   });
   final String title;
   final String value;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -128,16 +173,19 @@ class OrderInfoWidget extends StatelessWidget {
               fontSize: 10,
               fontWeight: FontWeight.w500,
             ),
+            textAlign: TextAlign.center,
           ).localize(context),
           const SizedBox(height: 5),
           Text(
             value,
-            style: const TextStyle(
-              color: AppColors.primaryColor,
+            style: TextStyle(
+              // color: AppColors.primaryColor,
+              color: color,
               fontWeight: FontWeight.w700,
               fontSize: 13,
             ),
-          ),
+            textAlign: TextAlign.center,
+          ).localize(context),
         ],
       ),
     );

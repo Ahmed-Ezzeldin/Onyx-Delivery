@@ -21,6 +21,7 @@ class LoginScreen extends StatelessWidget {
     return BaseWidget<LoginViewModel>(
       model: LoginViewModel(
         authService: Provider.of<AuthLocalDataSource>(context),
+        appLanguage: Provider.of<AppLanguage>(context),
       ),
       builder: (_, viewModel, child) {
         return Scaffold(

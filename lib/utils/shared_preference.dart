@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefKeys {
   static const String isUserLoggedIn = "isUserLoggedIn";
+  static const String deliveryNo = "P_DLVRY_NO";
   static const String user = "user";
   static const String languageCode = "languageCode";
   static const String theme = "theme";

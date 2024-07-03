@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:onyx_delivery/feature/auth/view_model/login_viewmodel.dart';
-import 'package:onyx_delivery/services/localization/app_language.dart';
 import 'package:provider/provider.dart';
 
 class LoginHeaderWidget extends StatelessWidget {
@@ -9,7 +8,6 @@ class LoginHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLanguage = Provider.of<AppLanguage>(context);
     return Consumer<LoginViewModel>(builder: (context, viewModel, _) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -23,8 +21,8 @@ class LoginHeaderWidget extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               Transform.flip(
-                flipX: appLanguage.isLTR(context) ? false : true,
-                flipY: appLanguage.isLTR(context) ? false : false,
+                flipX: viewModel.appLanguage.isLTR(context) ? false : true,
+                flipY: viewModel.appLanguage.isLTR(context) ? false : false,
                 child: SvgPicture.asset("assets/svgs/circle_red.svg"),
               ),
               IconButton(

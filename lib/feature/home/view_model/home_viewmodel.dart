@@ -6,6 +6,7 @@ import 'package:onyx_delivery/utils/customs/language_dialog.dart';
 import 'package:onyx_delivery/utils/base/base_notifier.dart';
 import 'package:onyx_delivery/services/localization/app_language.dart';
 import 'package:onyx_delivery/utils/dialogs_helper.dart';
+import 'package:onyx_delivery/utils/shared_preference.dart';
 
 class HomeScreenViewModel extends BaseNotifier {
   HomeScreenViewModel({
@@ -34,10 +35,10 @@ class HomeScreenViewModel extends BaseNotifier {
     final res = await deliveryRepo.getDeliveryBills(
       body: {
         "Value": {
-          "P_DLVRY_NO": "1010",
-          "P_LANG_NO": "1",
-          "P_BILL_SRL": "",
-          "P_PRCSSD_FLG": "",
+          // "P_BILL_SRL": "",
+          "P_LANG_NO": appLanguage.appLocale.languageCode == "ar" ? "1" : "2",
+          "P_DLVRY_NO": "${SharedPref.getString(SharedPrefKeys.deliveryNo)}",
+          "P_PRCSSD_FLG": isNew ? "0" : "",
         }
       },
     );

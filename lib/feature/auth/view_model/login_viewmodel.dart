@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onyx_delivery/data/local/auth_local_data_source.dart';
+import 'package:onyx_delivery/services/localization/app_language.dart';
 import 'package:onyx_delivery/utils/base/base_notifier.dart';
 import 'package:onyx_delivery/services/router/nav_service.dart';
 import 'package:onyx_delivery/feature/home/view/home_screen.dart';
@@ -8,8 +9,10 @@ import 'package:onyx_delivery/utils/dialogs_helper.dart';
 
 class LoginViewModel extends BaseNotifier {
   final AuthLocalDataSource authService;
+  final AppLanguage appLanguage;
   LoginViewModel({
     required this.authService,
+    required this.appLanguage,
   }) {
     userIdController.text = "1010";
     passwordController.text = "1";
@@ -51,7 +54,9 @@ class LoginViewModel extends BaseNotifier {
     final res = await authService.login(
       body: {
         "Value": {
-          "P_LANG_NO": "1",
+          // "P_LANG_NO": "1", // ar
+          // "P_LANG_NO": "2", // en
+          "P_LANG_NO": appLanguage.appLocale.languageCode == "ar" ? "1" : "2",
           "P_DLVRY_NO": userIdController.text,
           "P_PSSWRD": passwordController.text,
         }

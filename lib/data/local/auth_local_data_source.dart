@@ -51,6 +51,7 @@ class AuthLocalDataSource extends ChangeNotifier {
     try {
       await Future.wait([
         SharedPref.remove(SharedPrefKeys.user),
+        SharedPref.remove(SharedPrefKeys.deliveryNo),
         SharedPref.remove(SharedPrefKeys.isUserLoggedIn),
       ]);
       _userModel = null;
@@ -71,6 +72,7 @@ class AuthLocalDataSource extends ChangeNotifier {
         body: body,
       );
       if (res.right != null) {
+        await SharedPref.setString(SharedPrefKeys.deliveryNo, body["Value"]["P_DLVRY_NO"]);
         await saveUser(UserModel.fromJson(res.right["Data"]));
         // await AuthLocalDataSource().saveUser(UserModel.fromJson(res.right["Data"]));
         return Either(right: true);

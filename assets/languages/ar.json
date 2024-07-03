@@ -1,7 +1,7 @@
 {
     "Welcome Back!": "مرحبًا بعودتك!",
     "Log back into your account": "سجل الدخول مرة أخرى إلى حسابك",
-    "User ID": "معرف المستخدم",
+    "User ID": "هوية المستخدم",
     "Password": "كلمة المرور",
     "Show More": "عرض المزيد",
     "Log in": "تسجيل الدخول",
@@ -22,8 +22,11 @@
     "Choose Language": "اختر اللغة",
     "Apply": "تطبيق",
     "Required": "مطلوب",
-    "Please enter your user ID": "يرجى إدخال معرف المستخدم الخاص بك",
+    "Please enter your user ID": "يرجى إدخال هوية المستخدم الخاص بك",
     "Please enter your password": "يرجى إدخال كلمة المرور الخاصة بك",
     "Tap to retry": "اضغط للمحاولة مرة أخرى",
+    "Delivered": "تم التوصيل",
+    "Partial Return": "مردود جزئي",
+    "Full Return": "مردود كامل",
     "LAST": "الأخير"
 }
