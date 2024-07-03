@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:onyx_delivery/data/local/auth_local_data_source.dart';
 import 'package:onyx_delivery/feature/home/view_model/home_viewmodel.dart';
 import 'package:onyx_delivery/services/theme/app_colors.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,7 @@ class HomeHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authLocal2 = Provider.of<AuthLocalDataSource>(context);
     return Consumer<HomeScreenViewModel>(
       builder: (context, viewModel, _) {
         return Stack(
@@ -30,16 +32,18 @@ class HomeHeaderWidget extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Expanded(
+                  Expanded(
                     flex: 3,
                     child: Center(
                       child: Padding(
-                        padding: EdgeInsets.only(left: 20, top: 20, right: 20),
+                        padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
                         child: Text(
-                          "Ahmed othman",
-                          style: TextStyle(
+                          // "Ahmed othman",
+                          // "${viewModel.authLocal.userModel?.deliveryName}",
+                          "${authLocal2.userModel?.deliveryName}",
+                          style: const TextStyle(
                             color: AppColors.white,
-                            fontSize: 25,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
                             height: 0,
                           ),

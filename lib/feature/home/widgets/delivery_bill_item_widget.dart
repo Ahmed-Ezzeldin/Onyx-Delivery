@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:onyx_delivery/feature/home/models/delivery_bill_model.dart';
+import 'package:onyx_delivery/services/localization/app_language.dart';
 import 'package:onyx_delivery/services/theme/app_colors.dart';
+import 'package:provider/provider.dart';
 
-class OrderItemWidget extends StatelessWidget {
-  const OrderItemWidget({
+class DeliveryBillItemWidget extends StatelessWidget {
+  const DeliveryBillItemWidget({
+    required this.deliveryBill,
     super.key,
   });
 
+  final DeliveryBillModel? deliveryBill;
+
   @override
   Widget build(BuildContext context) {
+    final appLanguage = Provider.of<AppLanguage>(context);
+
     return Container(
       margin: const EdgeInsets.only(left: 16, right: 16, bottom: 20),
       decoration: BoxDecoration(
@@ -25,15 +33,16 @@ class OrderItemWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Expanded(
+          Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "#1569999",
-                    style: TextStyle(
+                    // "#1569999",
+                    "#${deliveryBill?.bILLNO}",
+                    style: const TextStyle(
                       color: AppColors.greyColor,
                       fontWeight: FontWeight.w500,
                       fontSize: 12,
@@ -43,19 +52,21 @@ class OrderItemWidget extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        OrderInfoWidget(
+                        const OrderInfoWidget(
                           title: "Status",
                           value: "Delivering",
                         ),
-                        VerticalDivider(color: AppColors.grey, thickness: 1),
+                        const VerticalDivider(color: AppColors.grey, thickness: 1),
                         OrderInfoWidget(
                           title: "Total price",
-                          value: "6378 LE",
+                          // value: "6378 LE",
+                          value: "${(double.tryParse("${deliveryBill?.tAXAMT}") ?? 0).toStringAsFixed(2)} LE",
                         ),
-                        VerticalDivider(color: AppColors.grey, thickness: 1),
+                        const VerticalDivider(color: AppColors.grey, thickness: 1),
                         OrderInfoWidget(
                           title: "Date",
-                          value: "11/6/2020",
+                          // value: "11/6/2020",
+                          value: "${deliveryBill?.bILLDATE}",
                         ),
                       ],
                     ),
@@ -69,11 +80,13 @@ class OrderItemWidget extends StatelessWidget {
             width: 44,
             height: 100,
             padding: const EdgeInsets.all(5),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: AppColors.primaryColor,
               borderRadius: BorderRadius.only(
-                topRight: Radius.circular(8),
-                bottomRight: Radius.circular(8),
+                topRight: Radius.circular(appLanguage.isLTR(context) ? 8 : 0),
+                bottomRight: Radius.circular(appLanguage.isLTR(context) ? 8 : 0),
+                topLeft: Radius.circular(appLanguage.isLTR(context) ? 0 : 8),
+                bottomLeft: Radius.circular(appLanguage.isLTR(context) ? 0 : 8),
               ),
             ),
             child: const Column(
@@ -105,27 +118,29 @@ class OrderInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // const Text("#1569999"),
-        Text(
-          title,
-          style: const TextStyle(
-            color: AppColors.greyColor,
-            fontSize: 10,
-            fontWeight: FontWeight.w500,
+    return Expanded(
+      child: Column(
+        children: [
+          // const Text("#1569999"),
+          Text(
+            title,
+            style: const TextStyle(
+              color: AppColors.greyColor,
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+            ),
           ),
-        ),
-        const SizedBox(height: 5),
-        Text(
-          value,
-          style: const TextStyle(
-            color: AppColors.primaryColor,
-            fontWeight: FontWeight.w700,
-            fontSize: 14,
+          const SizedBox(height: 5),
+          Text(
+            value,
+            style: const TextStyle(
+              color: AppColors.primaryColor,
+              fontWeight: FontWeight.w700,
+              fontSize: 13,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

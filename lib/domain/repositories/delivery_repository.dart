@@ -1,18 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:onyx_delivery/data/remote/delivery_data_source.dart';
-import 'package:onyx_delivery/feature/auth/models/user_model.dart';
+import 'package:onyx_delivery/feature/home/models/delivery_bill_model.dart';
 import 'package:onyx_delivery/services/api/app_failure.dart';
 import 'package:onyx_delivery/services/api/either.dart';
 
-class DeliveryRepository extends ChangeNotifier {
-  Future<Either<AppFailure, UserModel>> getNotifications() async {
+class DeliveryRepository {
+  Future<Either<AppFailure, List<DeliveryBillModel>>> getDeliveryBills({required Map<String, dynamic> body}) async {
     try {
-      var res = await DeliveryDataSource.getDeliveryBills(
-        body: {
-          "offset": "_pageOffset",
-          "limit": "_pageLimit",
-        },
-      );
+      var res = await DeliveryDataSource.getDeliveryBills(body: body);
       if (res.left != null) {
         return Either(left: res.left);
       } else {

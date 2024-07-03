@@ -15,7 +15,9 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return BaseWidget<SplashScreenViewModel>(
-      model: SplashScreenViewModel(auth: Provider.of<AuthLocalDataSource>(context)),
+      model: SplashScreenViewModel(
+        authLocal: Provider.of<AuthLocalDataSource>(context),
+      ),
       initState: (model) => model.delayFun(),
       builder: (context, model, child) {
         return Scaffold(

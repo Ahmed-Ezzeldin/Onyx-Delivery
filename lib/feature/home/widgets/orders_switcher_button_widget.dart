@@ -36,7 +36,7 @@ class OrdersSwitcherButtonWidget extends StatelessWidget {
                 onTap: () {
                   if (viewModel.isNew == false) {
                     viewModel.isNew = true;
-                    viewModel.setBusy();
+                    viewModel.setState();
                   }
                 },
               ),
@@ -46,7 +46,7 @@ class OrdersSwitcherButtonWidget extends StatelessWidget {
                 onTap: () {
                   if (viewModel.isNew == true) {
                     viewModel.isNew = false;
-                    viewModel.setBusy();
+                    viewModel.setState();
                   }
                 },
               ),

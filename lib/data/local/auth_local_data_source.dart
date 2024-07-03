@@ -8,7 +8,6 @@ import 'package:onyx_delivery/utils/logger.dart';
 class AuthLocalDataSource extends ChangeNotifier {
   UserModel? _userModel;
   UserModel? get userModel => _userModel;
-  // bool get isLogged => SharedPref.getBool(SharedPrefKeys.isUserLoggedIn) ?? false == true;
   bool get isLogged => userModel != null;
 
   Future<bool> saveUser(UserModel user) async {
