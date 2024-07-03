@@ -62,7 +62,7 @@ class LanguageDialog extends StatelessWidget {
                   radius: 12,
                   height: 44,
                   width: double.infinity,
-                  title: "Apply",
+                  title: "Apply".localize(context),
                   textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   onPressed: () {
                     appLanguage.changeLanguageByName(languageName: selectedLang);

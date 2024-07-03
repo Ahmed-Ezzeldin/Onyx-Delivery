@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onyx_delivery/feature/home/view_model/home_viewmodel.dart';
+import 'package:onyx_delivery/services/localization/app_language.dart';
 import 'package:onyx_delivery/services/theme/app_colors.dart';
 import 'package:onyx_delivery/utils/size_config.dart';
 import 'package:provider/provider.dart';
@@ -88,7 +89,7 @@ class SwitchButton extends StatelessWidget {
               fontWeight: isActive ? FontWeight.w600 : FontWeight.w600,
               color: isActive ? AppColors.white : AppColors.primaryColor,
             ),
-          ),
+          ).localize(context),
         ),
       ),
     );

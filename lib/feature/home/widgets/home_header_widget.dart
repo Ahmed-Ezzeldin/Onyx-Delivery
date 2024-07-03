@@ -11,7 +11,6 @@ class HomeHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final authLocal2 = Provider.of<AuthService>(context);
     return Consumer<HomeScreenViewModel>(
       builder: (context, viewModel, _) {
         return Stack(

@@ -93,8 +93,6 @@ class MainTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locale = AppLocalizations.of(context);
-
     InputBorder? border = this.border ??
         OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
@@ -159,7 +157,7 @@ class MainTextField extends StatelessWidget {
           switch (validator) {
             case Validator.required:
               if (value!.trim().isEmpty) {
-                return locale.get("Required");
+                return "Required".localize(context);
               }
               return null;
             case Validator.userId:

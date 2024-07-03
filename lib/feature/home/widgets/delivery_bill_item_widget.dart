@@ -89,15 +89,15 @@ class DeliveryBillItemWidget extends StatelessWidget {
                 bottomLeft: Radius.circular(appLanguage.isLTR(context) ? 0 : 8),
               ),
             ),
-            child: const Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "Order Details",
                   style: TextStyle(fontSize: 8, color: AppColors.white),
-                ),
-                SizedBox(height: 5),
-                Icon(Icons.arrow_forward_ios, size: 16, color: AppColors.white),
+                ).localize(context),
+                const SizedBox(height: 5),
+                const Icon(Icons.arrow_forward_ios, size: 16, color: AppColors.white),
               ],
             ),
           ),
@@ -121,7 +121,6 @@ class OrderInfoWidget extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          // const Text("#1569999"),
           Text(
             title,
             style: const TextStyle(
@@ -129,7 +128,7 @@ class OrderInfoWidget extends StatelessWidget {
               fontSize: 10,
               fontWeight: FontWeight.w500,
             ),
-          ),
+          ).localize(context),
           const SizedBox(height: 5),
           Text(
             value,
