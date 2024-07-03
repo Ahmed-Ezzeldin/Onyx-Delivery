@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onyx_delivery/data/remote/auth_remote_data_source.dart';
+import 'package:onyx_delivery/data/local/auth_local_data_source.dart';
 import 'package:onyx_delivery/utils/base/base_notifier.dart';
 import 'package:onyx_delivery/services/router/nav_service.dart';
 import 'package:onyx_delivery/feature/home/view/home_screen.dart';
@@ -7,8 +7,10 @@ import 'package:onyx_delivery/utils/customs/language_dialog.dart';
 import 'package:onyx_delivery/utils/dialogs_helper.dart';
 
 class LoginViewModel extends BaseNotifier {
-  final AuthRemoteDataSource authRemote;
-  LoginViewModel({required this.authRemote}) {
+  final AuthLocalDataSource authService;
+  LoginViewModel({
+    required this.authService,
+  }) {
     userIdController.text = "1010";
     passwordController.text = "1";
   }
@@ -46,7 +48,7 @@ class LoginViewModel extends BaseNotifier {
 
   Future<void> login() async {
     setBusy();
-    final res = await authRemote.login(
+    final res = await authService.login(
       body: {
         "Value": {
           "P_LANG_NO": "1",

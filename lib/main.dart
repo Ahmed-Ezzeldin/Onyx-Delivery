@@ -20,7 +20,6 @@ void main() async {
     Logger.printt(error, isError: true);
   }
   setupProviders();
-
   runApp(const MyApp());
 }
 

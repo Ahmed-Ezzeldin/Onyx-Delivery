@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:onyx_delivery/data/remote/auth_remote_data_source.dart';
+import 'package:onyx_delivery/data/local/auth_local_data_source.dart';
 import 'package:onyx_delivery/feature/auth/view_model/login_viewmodel.dart';
+import 'package:onyx_delivery/feature/auth/widgets/floating_animated_widget.dart';
+import 'package:onyx_delivery/feature/auth/widgets/login_header_widget.dart';
 import 'package:onyx_delivery/utils/base/base_widget.dart';
 import 'package:onyx_delivery/utils/customs/main_progress.dart';
 import 'package:onyx_delivery/utils/customs/main_textfield.dart';
@@ -16,10 +18,9 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appLanguage = Provider.of<AppLanguage>(context);
     return BaseWidget<LoginViewModel>(
       model: LoginViewModel(
-        authRemote: AuthRemoteDataSource(),
+        authService: Provider.of<AuthLocalDataSource>(context),
       ),
       builder: (_, viewModel, child) {
         return Scaffold(
@@ -27,30 +28,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 60),
-                      child: SvgPicture.asset("assets/svgs/login_logo.svg"),
-                    ),
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Transform.flip(
-                          flipX: appLanguage.isLTR(context) ? false : true,
-                          flipY: appLanguage.isLTR(context) ? false : false,
-                          child: SvgPicture.asset("assets/svgs/circle_red.svg"),
-                        ),
-                        IconButton(
-                          icon: SvgPicture.asset("assets/svgs/ic_language_white.svg"),
-                          onPressed: () => viewModel.changeLanguage(context),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
+                const LoginHeaderWidget(),
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: Form(
@@ -117,7 +95,11 @@ class LoginScreen extends StatelessWidget {
                                 onPressed: viewModel.submitForm,
                               ),
                         const SizedBox(height: 30),
-                        SvgPicture.asset("assets/svgs/delivery_car.svg"),
+                        FloatingAnimatedWidget(
+                          end: const Offset(0.0, 0.05),
+                          milliseconds: 2000,
+                          child: SvgPicture.asset("assets/svgs/delivery_car.svg"),
+                        ),
                       ],
                     ),
                   ),

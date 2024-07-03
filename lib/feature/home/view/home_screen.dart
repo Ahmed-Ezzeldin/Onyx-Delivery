@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
     return BaseWidget<HomeScreenViewModel>(
       model: HomeScreenViewModel(
         appLanguage: Provider.of<AppLanguage>(context),
-        authLocal: Provider.of<AuthLocalDataSource>(context),
+        authService: Provider.of<AuthLocalDataSource>(context),
         deliveryRepo: DeliveryRepository(),
       ),
       initState: (vireModel) => vireModel.getDeliveryBills(),
@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.logout),
                 onPressed: () {
-                  viewModel.authLocal.signOut().then((value) {
+                  viewModel.authService.signOut().then((value) {
                     NavService().pushAndRemoveUntilKey(const LoginScreen());
                   });
                 },

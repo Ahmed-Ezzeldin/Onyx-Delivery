@@ -10,12 +10,12 @@ import 'package:onyx_delivery/utils/dialogs_helper.dart';
 class HomeScreenViewModel extends BaseNotifier {
   HomeScreenViewModel({
     required this.appLanguage,
-    required this.authLocal,
+    required this.authService,
     required this.deliveryRepo,
   });
 
   final AppLanguage appLanguage;
-  final AuthLocalDataSource authLocal;
+  final AuthLocalDataSource authService;
   final DeliveryRepository deliveryRepo;
   bool isNew = true;
   List<DeliveryBillModel>? deliveryBillList = [];

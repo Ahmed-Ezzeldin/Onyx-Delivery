@@ -4,6 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:onyx_delivery/utils/shared_preference.dart';
 import 'package:onyx_delivery/feature/auth/models/user_model.dart';
 import 'package:onyx_delivery/utils/logger.dart';
+import 'package:onyx_delivery/services/api/app_failure.dart';
+import 'package:onyx_delivery/services/api/either.dart';
+import 'package:onyx_delivery/services/api/end_points.dart';
+import 'package:onyx_delivery/services/api/headers.dart';
+import 'package:onyx_delivery/services/api/http_service.dart';
 
 class AuthLocalDataSource extends ChangeNotifier {
   UserModel? _userModel;
@@ -17,7 +22,6 @@ class AuthLocalDataSource extends ChangeNotifier {
         SharedPref.setBool(SharedPrefKeys.isUserLoggedIn, true),
       ]);
       _userModel = user;
-      Logger.printObject(user, title: "saveUser 👤👤");
       notifyListeners();
       return true;
     } catch (error) {
@@ -32,14 +36,12 @@ class AuthLocalDataSource extends ChangeNotifier {
       if (userString != null) {
         Map<String, dynamic> userMap = json.decode(userString);
         _userModel = UserModel.fromJson(userMap);
-        Logger.printObject(_userModel, title: "loadUser 👤👤");
         notifyListeners();
         return true;
       } else {
         return false;
       }
     } catch (error) {
-      Logger.printt("loadUser error ---> ${error.toString()}");
       await SharedPref.clear();
       return false;
     }
@@ -57,6 +59,26 @@ class AuthLocalDataSource extends ChangeNotifier {
     } catch (error) {
       Logger.printt("signOut error ---> ${error.toString()}");
       return false;
+    }
+  }
+
+  Future<Either<AppFailure, dynamic>> login({required Map<String, dynamic> body}) async {
+    try {
+      final res = await HttpService.request(
+        endPoint: EndPoints.checkDeliveryLogin,
+        requestType: RequestType.post,
+        header: Headers.guestHeader,
+        body: body,
+      );
+      if (res.right != null) {
+        await saveUser(UserModel.fromJson(res.right["Data"]));
+        // await AuthLocalDataSource().saveUser(UserModel.fromJson(res.right["Data"]));
+        return Either(right: true);
+      } else {
+        return Either(left: res.left);
+      }
+    } catch (error) {
+      return Either(left: AppFailure(message: error.toString()));
     }
   }
 }
