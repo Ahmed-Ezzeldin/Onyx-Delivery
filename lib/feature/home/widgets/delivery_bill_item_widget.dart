@@ -102,7 +102,7 @@ enum DeliveryStatusFlag {
                         OrderInfoWidget(
                           title: "Total price",
                           // value: "6378 LE",
-                          value: "${(double.tryParse("${deliveryBill?.tAXAMT}") ?? 0).toStringAsFixed(2)} LE",
+                          value: "${(double.tryParse("${deliveryBill?.bILLAMT}") ?? 0).toStringAsFixed(2)} LE",
                         ),
                         const VerticalDivider(color: AppColors.grey, thickness: 1),
                         OrderInfoWidget(

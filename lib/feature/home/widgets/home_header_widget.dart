@@ -30,6 +30,14 @@ class HomeHeaderWidget extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
+                  // InkWell(
+                  //   child: const Icon(Icons.logout, color: AppColors.white),
+                  //   onTap: () {
+                  //     viewModel.authService.signOut().then((value) {
+                  //       NavService().pushAndRemoveUntilKey(const LoginScreen());
+                  //     });
+                  //   },
+                  // ),
                   Expanded(
                     flex: 3,
                     child: Center(

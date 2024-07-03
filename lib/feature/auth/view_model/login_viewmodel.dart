@@ -14,8 +14,8 @@ class LoginViewModel extends BaseNotifier {
     required this.authService,
     required this.appLanguage,
   }) {
-    userIdController.text = "1010";
-    passwordController.text = "1";
+    // userIdController.text = "1010";
+    // passwordController.text = "1";
   }
 
   final formKey = GlobalKey<FormState>();

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:onyx_delivery/data/local/auth_local_data_source.dart';
 import 'package:onyx_delivery/domain/repositories/delivery_repository.dart';
-import 'package:onyx_delivery/feature/auth/view/login_screen.dart';
 import 'package:onyx_delivery/feature/home/view_model/home_viewmodel.dart';
 import 'package:onyx_delivery/feature/home/widgets/empty_delivery_bill_widgte.dart';
-import 'package:onyx_delivery/services/router/nav_service.dart';
 import 'package:onyx_delivery/utils/base/base_widget.dart';
 import 'package:onyx_delivery/services/localization/app_language.dart';
 import 'package:onyx_delivery/feature/home/widgets/home_header_widget.dart';
@@ -31,14 +29,6 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const HomeHeaderWidget(),
-              IconButton(
-                icon: const Icon(Icons.logout),
-                onPressed: () {
-                  viewModel.authService.signOut().then((value) {
-                    NavService().pushAndRemoveUntilKey(const LoginScreen());
-                  });
-                },
-              ),
               const SizedBox(height: 20),
               const OrdersSwitcherButtonWidget(),
               const SizedBox(height: 20),
